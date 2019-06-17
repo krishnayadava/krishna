@@ -1,0 +1,12 @@
+package com.qa.base;
+
+public class TestBase {
+
+	
+	try{
+		
+		prop=new Properties();
+		
+		FileInputStream ip=new FileInputStream(System.getProperty("user")+"/src/main/java/com/qa/config/config.properties");
+	}
+}

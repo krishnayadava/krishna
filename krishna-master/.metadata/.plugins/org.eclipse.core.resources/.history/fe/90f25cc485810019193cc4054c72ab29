@@ -1,0 +1,61 @@
+package com.qa.client;
+import java.io.IOException;
+import java.util.HashMap;
+
+import org.apache.http.Header;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
+
+public class RestClient {
+	
+	//1.GET --> for get we need one GET method and one URL (CHEKK IN POSTMAN)
+	public void get(String url) throws ClientProtocolException, IOException{
+		
+		//use of httpclients class from http client package // createDefault method  will create one client connection and will return one
+		                                                    //closeblhttpclient class object which is abstract class	
+		
+		
+		CloseableHttpClient httpclient=HttpClients.createDefault();
+		
+		
+		HttpGet httpget= new HttpGet(url);  // create GET request with the URl..it is just like putting URL in postman.
+		
+		
+		CloseableHttpResponse response=httpclient.execute(httpget);
+		
+		//a. getting status code
+		int status=response.getStatusLine().getStatusCode();
+				
+				System.out.print(status);;
+		
+				String responseString=EntityUtils.toString(response.getEntity());
+				
+				
+				JSONObject responseJSON= new JSONObject(responseString);
+				
+				System.out.print(responseJSON);;
+				
+       	//getting all headers
+		Header[] headersArray= response.getAllHeaders();	
+		
+		HashMap<String,String> allheader= new HashMap<String,String>();
+		
+		for (Header header: headersArray){
+			allheader.put(header.getName(), header.getValue());
+			
+			System.out.println(allheader);
+			
+			
+			
+			
+		}
+				
+	}
+
+}

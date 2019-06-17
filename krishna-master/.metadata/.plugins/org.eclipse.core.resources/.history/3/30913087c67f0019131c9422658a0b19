@@ -1,0 +1,28 @@
+package com.qa.tests;
+
+import org.testng.annotations.BeforeMethod;
+
+import com.qa.base.TestBase;
+import com.qa.client.RestClient;
+
+public class GetAPITest extends TestBase {
+	
+	TestBase testbase;
+	RestClient restclient;
+	
+	@BeforeMethod
+	public void setup(){
+		
+		testbase= new TestBase();
+		String serviceUrl=prop.getProperty("URL");
+		String appURL=prop.getProperty("serviceURL");
+		
+		String url=serviceUrl+appURL;
+		
+		
+		
+		
+		
+	}
+
+}

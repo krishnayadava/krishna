@@ -1,0 +1,10 @@
+package com.qa.base;
+
+public class TestBase {
+
+	
+	try{
+		
+		prop=new Properties();
+	}
+}
